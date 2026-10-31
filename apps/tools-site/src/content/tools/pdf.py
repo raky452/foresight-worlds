@@ -136,4 +136,26 @@ dict(slug="compress-pdf", section="pdf", tool="compresspdf", config={"target": 5
       ("Why can't I select text after compressing?", "Pages are saved as images to reach small sizes reliably. For documents that must stay searchable, use a larger target or keep the original."),
       ("The result is still larger than my target. What now?", "The tool stops before pages become unreadable. Remove unneeded pages, turn on black and white, or ask whether the portal accepts a larger file.")],
  related=["compress-pdf-to-100kb", "split-pdf", "jpg-to-pdf", "compress-image"]),
+
+dict(slug="heic-to-pdf", section="pdf", tool="img2pdf", config={},
+ short="HEIC to PDF", blurb="iPhone photos into one PDF",
+ title="HEIC to PDF Converter – iPhone Photos to PDF, Free, No Upload | TechnoForesight",
+ desc="Convert iPhone HEIC photos into a single PDF. Choose page size, order and margins. Free, private and unlimited.",
+ h1="Convert HEIC to PDF",
+ lede="Turn iPhone photos of documents, receipts and certificates into one PDF you can email or upload, without converting each photo first.",
+ body="""
+<h2>How to convert HEIC photos to PDF</h2>
+<ol><li>Choose your HEIC photos. You can mix in JPG, PNG and WebP files too.</li>
+<li>Put them in order with the arrows. Each photo becomes one page.</li>
+<li>Choose A4 or US Letter, the orientation and the margin, then select <strong>Create PDF</strong>.</li></ol>
+<h2>Why go straight from HEIC to PDF</h2>
+<p>iPhones save photos as HEIC, which many websites, printers and Windows computers cannot open. Most people convert each photo to JPG and then build a PDF in a second tool. This page does both in one step, inside your browser, and keeps the orientation your iPhone recorded so pages are the right way up.</p>
+<h2>Keep the PDF small</h2>
+<p>Phone photos make large PDFs. If a form has a size limit, run the result through <a href="/compress-pdf">compress PDF</a>, or crop the photos to the document edges before converting.</p>
+""",
+ faq=[("Are my photos uploaded?", PRIVACY_LINE),
+      ("Can I scan several pages into one PDF?", "Yes. Add all the photos, arrange them, and they become one multi-page PDF."),
+      ("Does it work on iPhone?", "Yes. Open the page in Safari, choose photos from your library and download the PDF to Files.")],
+ related=["heic-to-jpg", "jpg-to-pdf", "compress-pdf", "merge-pdf"]),
+
 ]

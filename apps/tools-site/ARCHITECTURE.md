@@ -50,7 +50,10 @@ Set `layout` on an entry. Available:
 Add a layout by writing a `layout_<name>(entry)` function in `build.py`, registering it in `LAYOUTS`, and adding its styles under a `.layout-<name>` block in `layout.css`.
 
 ## URL conventions
-- Tool pages: flat, lowercase, hyphenated, matching the search phrase (`/heic-to-jpg`). Never rename a live slug; add a redirect in `firebase.json` if you must.
+- TechnoForesight is an umbrella. Converter tools live under `/converters/<slug>` (`TOOLS_BASE` in `common.py`), lowercase, hyphenated, matching the search phrase (`/converters/heic-to-jpg`). Never rename a live slug.
+- The site root `/` currently shows the converters hub with its canonical set to `/converters`, so search engines index the tools under `/converters` and the root can later become the umbrella home page without breaking any indexed link.
+- The original flat URLs (`/heic-to-jpg`) permanently (301) redirect to `/converters/...`. `build.py` regenerates these redirects in `firebase.json` on every build; commit the updated `firebase.json`.
+- `GOOGLE_SITE_VERIFICATION` and `ADSENSE_CLIENT` in `common.py` switch on the Search Console meta tag, the AdSense script and `ads.txt`.
 - Future families that are not single-task tools should use a short path prefix chosen per family (for example `/<family>/<slug>`), so they do not compete with tool slugs.
 
 ## Server-side features (when needed)

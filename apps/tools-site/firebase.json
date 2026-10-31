@@ -37,6 +37,133 @@
     ],
     "predeploy": [
       "python3 \"$PROJECT_DIR/build.py\""
+    ],
+    "redirects": [
+      {
+        "source": "/compress-image-to-20kb",
+        "destination": "/converters/compress-image-to-20kb",
+        "type": 301
+      },
+      {
+        "source": "/compress-image-to-50kb",
+        "destination": "/converters/compress-image-to-50kb",
+        "type": 301
+      },
+      {
+        "source": "/exam-photo-signature-resizer",
+        "destination": "/converters/exam-photo-signature-resizer",
+        "type": 301
+      },
+      {
+        "source": "/passport-photo-sheet",
+        "destination": "/converters/passport-photo-sheet",
+        "type": 301
+      },
+      {
+        "source": "/compress-pdf-to-100kb",
+        "destination": "/converters/compress-pdf-to-100kb",
+        "type": 301
+      },
+      {
+        "source": "/heic-to-jpg",
+        "destination": "/converters/heic-to-jpg",
+        "type": 301
+      },
+      {
+        "source": "/heic-to-png",
+        "destination": "/converters/heic-to-png",
+        "type": 301
+      },
+      {
+        "source": "/webp-to-png",
+        "destination": "/converters/webp-to-png",
+        "type": 301
+      },
+      {
+        "source": "/webp-to-jpg",
+        "destination": "/converters/webp-to-jpg",
+        "type": 301
+      },
+      {
+        "source": "/avif-to-jpg",
+        "destination": "/converters/avif-to-jpg",
+        "type": 301
+      },
+      {
+        "source": "/png-to-jpg",
+        "destination": "/converters/png-to-jpg",
+        "type": 301
+      },
+      {
+        "source": "/jpg-to-png",
+        "destination": "/converters/jpg-to-png",
+        "type": 301
+      },
+      {
+        "source": "/compress-image",
+        "destination": "/converters/compress-image",
+        "type": 301
+      },
+      {
+        "source": "/compress-image-to-100kb",
+        "destination": "/converters/compress-image-to-100kb",
+        "type": 301
+      },
+      {
+        "source": "/resize-image",
+        "destination": "/converters/resize-image",
+        "type": 301
+      },
+      {
+        "source": "/avif-to-png",
+        "destination": "/converters/avif-to-png",
+        "type": 301
+      },
+      {
+        "source": "/jpg-to-webp",
+        "destination": "/converters/jpg-to-webp",
+        "type": 301
+      },
+      {
+        "source": "/png-to-webp",
+        "destination": "/converters/png-to-webp",
+        "type": 301
+      },
+      {
+        "source": "/merge-pdf",
+        "destination": "/converters/merge-pdf",
+        "type": 301
+      },
+      {
+        "source": "/split-pdf",
+        "destination": "/converters/split-pdf",
+        "type": 301
+      },
+      {
+        "source": "/rotate-pdf",
+        "destination": "/converters/rotate-pdf",
+        "type": 301
+      },
+      {
+        "source": "/jpg-to-pdf",
+        "destination": "/converters/jpg-to-pdf",
+        "type": 301
+      },
+      {
+        "source": "/pdf-to-jpg",
+        "destination": "/converters/pdf-to-jpg",
+        "type": 301
+      },
+      {
+        "source": "/compress-pdf",
+        "destination": "/converters/compress-pdf",
+        "type": 301
+      },
+      {
+        "source": "/heic-to-pdf",
+        "destination": "/converters/heic-to-pdf",
+        "type": 301
+      }
     ]
   }
 }

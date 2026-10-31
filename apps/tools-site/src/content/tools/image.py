@@ -112,9 +112,9 @@ dict(slug="avif-to-jpg", section="image", tool="convert", config={"to": "jpeg"},
 <p>This converter uses your browser's own image decoder. Current versions of Chrome, Edge, Firefox and Safari (version 16 and later) can all read AVIF. If a file will not open, update your browser and try again.</p>
 """,
  faq=[("Is it private?", PRIVACY_LINE),
-      ("Can I convert AVIF to PNG?", "Use the WebP to PNG converter: it accepts AVIF files as well and saves PNG."),
+      ("Can I convert AVIF to PNG?", "Yes. Use AVIF to PNG, which also keeps transparent backgrounds."),
       ("Why did my AVIF fail to convert?", "Your browser may be too old to read AVIF. Update to the latest Chrome, Edge, Firefox or Safari.")],
- related=["webp-to-jpg", "heic-to-jpg", "compress-image"]),
+ related=["avif-to-png", "webp-to-jpg", "heic-to-jpg", "compress-image"]),
 
 dict(slug="png-to-jpg", section="image", tool="convert", config={"to": "jpeg"},
  short="PNG to JPG", blurb="Shrink screenshots and graphics",
@@ -218,4 +218,63 @@ dict(slug="resize-image", section="image", tool="resize", config={},
       ("Can I make an image bigger?", "Yes, but enlarging cannot add real detail, so large increases look soft."),
       ("How do I reach a file size limit too?", "Resize first, then use the image compressor with the KB limit you need.")],
  related=["compress-image", "exam-photo-signature-resizer", "passport-photo-sheet"]),
+
+dict(slug="avif-to-png", section="image", tool="convert", config={"to": "png"},
+ short="AVIF to PNG", blurb="Lossless copies of AVIF images",
+ title="AVIF to PNG Converter – Free, Keeps Transparency, No Upload | TechnoForesight",
+ desc="Convert AVIF images to PNG in your browser. Keeps transparency, works in batches, nothing is uploaded and there are no limits.",
+ h1="Convert AVIF to PNG",
+ lede="Turn AVIF images from websites and newer phones into PNG files that every editor and app can open, with transparency kept.",
+ body="""
+<h2>How to convert AVIF to PNG</h2>
+<ol><li>Choose or drop one or more AVIF files.</li><li>Select <strong>Convert to PNG</strong>.</li><li>Download each PNG, or all of them in one ZIP file.</li></ol>
+<h2>Why choose PNG for AVIF images</h2>
+<p>AVIF files often carry transparent backgrounds, especially logos, product cut-outs and stickers saved from online shops. PNG keeps that transparency, so the image still sits cleanly on slides, documents and designs. PNG is also lossless, which makes it the right format when you plan to edit the image further.</p>
+<p>If you only need a photo to share or upload and do not need transparency, <a href="/avif-to-jpg">AVIF to JPG</a> gives a much smaller file.</p>
+<h2>Which browsers can read AVIF</h2>
+<p>The converter uses your browser's own decoder. Current Chrome, Edge and Firefox, and Safari 16 or later, all read AVIF. If a file fails, update the browser and try again.</p>
+""",
+ faq=[("Is anything uploaded?", PRIVACY_LINE),
+      ("Why is the PNG larger than the AVIF?", "AVIF is one of the most efficient image formats available. PNG stores every pixel without lossy compression, so the same picture takes more space."),
+      ("Can I convert many files at once?", "Yes. Add as many AVIF files as you like and download them together as a ZIP.")],
+ related=["avif-to-jpg", "webp-to-png", "png-to-jpg"]),
+
+dict(slug="jpg-to-webp", section="image", tool="convert", config={"to": "webp"},
+ short="JPG to WebP", blurb="Smaller images for websites",
+ title="JPG to WebP Converter – Smaller Web Images, Free, No Upload | TechnoForesight",
+ desc="Convert JPG photos to WebP to make your website load faster. Adjustable quality, batch conversion, files stay on your device.",
+ h1="Convert JPG to WebP",
+ lede="Make photos for your website or online shop smaller without a visible loss in quality by converting them to WebP.",
+ body="""
+<h2>How to convert JPG to WebP</h2>
+<ol><li>Choose or drop your JPG images.</li><li>Set the quality. 80 to 85% suits most website photos.</li><li>Select <strong>Convert to WEBP</strong> and download the files.</li></ol>
+<h2>Why WebP helps your website</h2>
+<p>At the same visual quality, WebP files are usually 25 to 35% smaller than JPG. Smaller images load faster on mobile data, and page speed is one of the signals search engines use to rank pages. Every current browser displays WebP, so you can use it for product photos, blog images and banners.</p>
+<h2>When to keep JPG</h2>
+<p>Some email clients, older office software, print shops and government upload forms still expect JPG. Keep your original JPG files for those uses and serve the WebP versions on your website.</p>
+""",
+ faq=[("Is anything uploaded?", PRIVACY_LINE),
+      ("Does it work in Safari?", "Safari 14 and later can display WebP images. Saving WebP files needs Chrome, Edge or Firefox, and the tool tells you if your browser cannot."),
+      ("Will the image dimensions change?", "No. The width and height stay the same; only the format and file size change.")],
+ related=["png-to-webp", "webp-to-jpg", "compress-image"]),
+
+dict(slug="png-to-webp", section="image", tool="convert", config={"to": "webp"},
+ short="PNG to WebP", blurb="Lighter graphics with transparency",
+ title="PNG to WebP Converter – Keep Transparency, Smaller Files | TechnoForesight",
+ desc="Convert PNG images to WebP and keep transparency at a fraction of the size. Free, batch conversion, no upload.",
+ h1="Convert PNG to WebP",
+ lede="Shrink logos, icons, screenshots and product cut-outs by converting them from PNG to WebP, with transparent backgrounds kept.",
+ body="""
+<h2>How to convert PNG to WebP</h2>
+<ol><li>Choose or drop your PNG files.</li><li>Pick a quality. Use 90% or higher for screenshots with text.</li><li>Select <strong>Convert to WEBP</strong> and download.</li></ol>
+<h2>Smaller files, same transparency</h2>
+<p>PNG is lossless, which makes graphics and screenshots large. WebP supports transparency like PNG but compresses far better, so a transparent product image or logo is often a fraction of its PNG size. That makes pages load faster, especially on phones.</p>
+<h2>Good uses</h2>
+<ul><li>Product images with transparent backgrounds for online shops.</li><li>Logos and icons on websites and web apps.</li><li>Screenshots in blog posts and documentation.</li></ul>
+""",
+ faq=[("Is anything uploaded?", PRIVACY_LINE),
+      ("Is transparency kept?", "Yes. WebP supports transparency, so transparent areas in your PNG stay transparent."),
+      ("Should I convert icons too?", "Yes for websites. For apps or tools that only accept PNG, keep the original files.")],
+ related=["jpg-to-webp", "webp-to-png", "compress-image"]),
+
 ]
