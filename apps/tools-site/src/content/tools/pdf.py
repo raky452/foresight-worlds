@@ -1,0 +1,139 @@
+"""PDF tools.
+Each entry is one public page. Fields:
+  slug      URL path (/slug). Keep flat, lowercase, hyphenated, matching the search phrase.
+  section   id from sections.py
+  tool      handler name registered by a JS module (see handlers.py)
+  config    JSON passed to the handler
+  layout    optional: "workbench" (default) or "stage"
+  status    optional: "live" (default) or "draft" (drafts are not built)
+  short, blurb, title, desc, h1, lede, body, faq, related: page content
+"""
+from ..common import PRIVACY_LINE
+
+TOOLS = [
+dict(slug="merge-pdf", section="pdf", tool="merge", config={},
+ short="Merge PDF", blurb="Combine files in any order",
+ title="Merge PDF Files – Free, Unlimited, No Upload | TechnoForesight",
+ desc="Combine multiple PDF files into one in your browser. Reorder files, no upload, no sign-up and no page limits.",
+ h1="Merge PDF files",
+ lede="Combine several PDFs into one document. Put them in the order you want, and your files stay on your device.",
+ body="""
+<h2>How to merge PDFs</h2>
+<ol><li>Choose two or more PDF files, or drop them onto the box.</li>
+<li>Use the arrows to put them in the right order.</li>
+<li>Select <strong>Merge PDFs</strong> and download <em>merged.pdf</em>.</li></ol>
+<h2>Why merging here is private</h2>
+<p>Most online PDF tools upload your documents to their servers. That is a real concern for bank statements, ID proofs, contracts and medical reports. This tool merges the files inside your browser, so the documents never leave your device.</p>
+<h2>What is kept</h2>
+<p>Pages are copied exactly: text stays selectable, links and images are kept, and nothing is compressed. Bookmarks from the original files are not carried over.</p>
+<h2>Password-protected PDFs</h2>
+<p>PDFs locked with a password cannot be merged. Open them with the password and save an unlocked copy first.</p>
+""",
+ faq=[("Is there a limit on files or pages?", "No fixed limit. Very large documents depend on your device's memory."),
+      ("Are my PDFs uploaded?", PRIVACY_LINE),
+      ("Can I merge images and PDFs together?", "Convert the images with JPG to PDF first, then merge the results.")],
+ related=["split-pdf", "compress-pdf", "jpg-to-pdf", "rotate-pdf"]),
+
+dict(slug="split-pdf", section="pdf", tool="split", config={},
+ short="Split PDF", blurb="Extract or separate pages",
+ title="Split PDF – Extract Pages for Free, No Upload | TechnoForesight",
+ desc="Split a PDF into separate files or extract selected pages into a new PDF. Free and private: your document never leaves your device.",
+ h1="Split a PDF",
+ lede="Take out the pages you need, split a PDF into ranges, or save every page as its own file.",
+ body="""
+<h2>How to split a PDF</h2>
+<ol><li>Choose your PDF. The tool shows how many pages it has.</li>
+<li>Choose what to do: extract pages into one PDF, make one PDF per range, or save every page separately.</li>
+<li>Type the pages, such as <code>1-3, 5, 8-10</code>, and select <strong>Split PDF</strong>.</li></ol>
+<h2>Writing page ranges</h2>
+<ul><li><code>2</code> is a single page.</li><li><code>4-7</code> is pages 4 to 7.</li><li><code>10-</code> is page 10 to the end.</li><li>Separate items with commas: <code>1, 3-4, 9-</code>.</li></ul>
+<h2>Common uses</h2>
+<p>Send only the relevant pages of a long statement, separate a scanned bundle into individual documents, or take one certificate out of a combined file for an upload.</p>
+""",
+ faq=[("Is the PDF uploaded?", PRIVACY_LINE),
+      ("Do the pages lose quality?", "No. Pages are copied exactly, with text still selectable."),
+      ("Can I split a password-protected PDF?", "Not yet. Save an unlocked copy first.")],
+ related=["merge-pdf", "pdf-to-jpg", "rotate-pdf"]),
+
+dict(slug="rotate-pdf", section="pdf", tool="rotate", config={},
+ short="Rotate PDF", blurb="Fix sideways pages",
+ title="Rotate PDF Pages – Free and Permanent | TechnoForesight",
+ desc="Rotate all or selected pages of a PDF and save the result permanently. Free, private, works in your browser.",
+ h1="Rotate PDF pages",
+ lede="Fix scanned pages that are sideways or upside down, and save the rotation permanently.",
+ body="""
+<h2>How to rotate</h2>
+<ol><li>Choose one or more PDFs.</li><li>Pick the rotation. Leave pages empty to rotate every page, or enter pages such as <code>2, 5-6</code>.</li><li>Select <strong>Rotate PDF</strong> and download.</li></ol>
+<h2>Permanent, not just on screen</h2>
+<p>Rotating in a PDF viewer usually changes only your view. This tool saves the rotation into the file, so it looks right for everyone you send it to, and in upload previews.</p>
+""",
+ faq=[("Is the file uploaded?", PRIVACY_LINE),
+      ("Does rotating reduce quality?", "No. Only the page orientation setting changes."),
+      ("Can I rotate only some pages?", "Yes. Type the page numbers or ranges in the Pages box.")],
+ related=["merge-pdf", "split-pdf", "compress-pdf"]),
+
+dict(slug="jpg-to-pdf", section="pdf", tool="img2pdf", config={},
+ short="JPG to PDF", blurb="Turn photos and scans into a PDF",
+ title="JPG to PDF Converter – Combine Images, Free, No Upload | TechnoForesight",
+ desc="Convert JPG, PNG, HEIC and WebP images into one PDF. Choose A4 or Letter, margins and order. Free and private.",
+ h1="Convert JPG to PDF",
+ lede="Turn photos of documents, certificates and receipts into one tidy PDF, in the order you choose.",
+ body="""
+<h2>How to convert images to PDF</h2>
+<ol><li>Choose your images. JPG, PNG, HEIC, WebP and AVIF all work.</li>
+<li>Arrange them with the arrows. Each image becomes one page.</li>
+<li>Choose the page size, orientation and margin, then select <strong>Create PDF</strong>.</li></ol>
+<h2>Settings explained</h2>
+<ul><li><strong>A4</strong> is the standard page size in India, the UK and most of the world. US Letter is used in the USA and Canada.</li>
+<li><strong>Automatic orientation</strong> turns each page to landscape when the image is wider than it is tall.</li>
+<li><strong>Same as each image</strong> makes every page exactly the size of its image, with no white borders.</li></ul>
+<h2>Making the PDF smaller</h2>
+<p>Phone photos make large PDFs. If a portal has a size limit, use <a href="/compress-pdf">compress PDF</a> on the result, or compress the images first with the <a href="/compress-image">image compressor</a>.</p>
+""",
+ faq=[("Are my images uploaded?", PRIVACY_LINE),
+      ("Why are my iPhone photos rotated correctly?", "The tool reads the orientation saved by your phone camera and applies it before creating the page."),
+      ("Is there a page limit?", "No fixed limit. Hundreds of photos may be slow on older phones.")],
+ related=["compress-pdf", "merge-pdf", "pdf-to-jpg", "heic-to-jpg"]),
+
+dict(slug="pdf-to-jpg", section="pdf", tool="pdf2img", config={},
+ short="PDF to JPG", blurb="Save pages as images",
+ title="PDF to JPG Converter – High Quality, No Upload | TechnoForesight",
+ desc="Convert PDF pages to JPG or PNG images at up to 300 DPI. Choose pages, download as ZIP. Free and private.",
+ h1="Convert PDF to JPG",
+ lede="Save each page of a PDF as a JPG or PNG image, for slides, social posts, previews or forms that only accept images.",
+ body="""
+<h2>How to convert</h2>
+<ol><li>Choose a PDF.</li><li>Pick the quality and format. Leave Pages empty to convert all pages.</li><li>Select <strong>Convert to images</strong> and download one page or all of them as a ZIP.</li></ol>
+<h2>Which quality to choose</h2>
+<ul><li><strong>Small (96 DPI)</strong> for viewing on phones and sharing in chats.</li>
+<li><strong>Standard (150 DPI)</strong> for most uses, including slides and uploads.</li>
+<li><strong>High (300 DPI)</strong> for printing or when you need to zoom into small text.</li></ul>
+<p>Choose PNG for pages with mostly text and diagrams, where it stays crisp. Choose JPG for pages with photos, where it is much smaller.</p>
+""",
+ faq=[("Is the PDF uploaded?", PRIVACY_LINE),
+      ("Can I convert just one page?", "Yes. Type its number in the Pages box."),
+      ("Does it work with scanned PDFs?", "Yes. Each scanned page becomes an image.")],
+ related=["jpg-to-pdf", "split-pdf", "compress-image"]),
+
+dict(slug="compress-pdf", section="pdf", tool="compresspdf", config={"target": 500, "presets": [100, 200, 500, 1000, 2000]},
+ short="Compress PDF to size", blurb="Fit any upload limit",
+ title="Compress PDF to Size (100 KB, 200 KB, 1 MB) – No Upload | TechnoForesight",
+ desc="Reduce a PDF to a target size such as 100 KB, 200 KB, 500 KB or 1 MB. Free, works in your browser, your document is never uploaded.",
+ h1="Compress a PDF to a target size",
+ lede="Type the size limit you need to meet and get the most readable PDF that fits under it.",
+ body="""
+<h2>How to compress a PDF</h2>
+<ol><li>Choose your PDF.</li><li>Type the maximum size in KB, or tap a common limit.</li><li>Tick <strong>Black and white</strong> for scanned documents, then select <strong>Compress PDF</strong>.</li></ol>
+<h2>How it reaches your size</h2>
+<p>The tool redraws each page as an image and tries progressively smaller settings until the whole document fits your limit, keeping the highest quality that fits. This works especially well for scanned documents and phone photos turned into PDFs, which are where most oversized PDFs come from.</p>
+<div class="note"><p>Because pages become images, text in the compressed file cannot be selected or searched. Keep your original file as well.</p></div>
+<h2>Tips for small limits like 100 KB</h2>
+<ul><li>Remove pages the form does not need with <a href="/split-pdf">split PDF</a>.</li>
+<li>Turn on black and white: it often halves the size of scanned pages.</li>
+<li>Each page needs its share of the limit. Under 100 KB works well for 1 to 3 pages; longer documents need larger limits to stay readable.</li></ul>
+""",
+ faq=[("Is my PDF uploaded?", PRIVACY_LINE),
+      ("Why can't I select text after compressing?", "Pages are saved as images to reach small sizes reliably. For documents that must stay searchable, use a larger target or keep the original."),
+      ("The result is still larger than my target. What now?", "The tool stops before pages become unreadable. Remove unneeded pages, turn on black and white, or ask whether the portal accepts a larger file.")],
+ related=["compress-pdf-to-100kb", "split-pdf", "jpg-to-pdf", "compress-image"]),
+]

@@ -1,0 +1,51 @@
+/* Design tokens. Every colour, font and radius in the product comes from here.
+   Sections (tool families, future platforms) get their own accent via [data-section]. */
+:root{
+  --ink:#13294B;
+  --bg:#F3F6FA;
+  --surface:#FFFFFF;
+  --mist:#E6ECF4;
+  --line:#C9D3E1;
+  --text:#25303F;
+  --muted:#5B6678;
+  --stamp:#F2B705;
+  --stamp-ink:#3A2C00;
+  --ok:#147A3A;
+  --err:#B42318;
+  --focus:#1D5FD1;
+  --radius-lg:14px;
+  --radius-sm:6px;
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:36px;--space-7:56px;
+  --w-content:1080px;--w-read:760px;--w-stage:1440px;
+  --accent:var(--ink);
+  --head:"Familjen Grotesk", "Segoe UI", system-ui, sans-serif;
+  --body:"Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ink:#E3EAF6;
+    --bg:#0D1524;
+    --surface:#152035;
+    --mist:#1C2A44;
+    --line:#2C3D5C;
+    --text:#DCE3EE;
+    --muted:#9AA8BE;
+    --stamp:#F5C542;
+    --stamp-ink:#2A2000;
+    --ok:#4ADE80;
+    --err:#F87171;
+    --focus:#7FB0FF;
+    color-scheme:dark;
+  }
+}
+
+/* Section accents: add one line per new section. */
+[data-section=image]{--accent:#2563C9}
+[data-section=pdf]{--accent:#B3261E}
+[data-section=forms]{--accent:#0F7A62}
+@media (prefers-color-scheme:dark){
+  [data-section=image]{--accent:#7EAEF7}
+  [data-section=pdf]{--accent:#F28B82}
+  [data-section=forms]{--accent:#5FD3B4}
+}

@@ -1,0 +1,12 @@
+/* Element defaults and utilities. */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.6 var(--body)}
+img,svg{max-width:100%}
+a{color:var(--ink);text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+.wrap{max-width:var(--w-content);margin:0 auto;padding:0 20px}
+.narrow{max-width:var(--w-read)}
+
