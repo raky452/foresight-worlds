@@ -73,6 +73,9 @@
 .faq summary{font:600 18px/1.35 var(--head);color:var(--ink);cursor:pointer}
 .faq details p{margin:10px 0 0}
 .note{border-left:4px solid var(--stamp);padding:10px 16px;background:var(--surface);border-radius:0 var(--radius-sm) var(--radius-sm) 0;max-width:70ch}
+.content table{display:block;overflow-x:auto;border-collapse:collapse;max-width:70ch;margin:14px 0;font-size:15px}
+.content th,.content td{border:1px solid var(--line);padding:8px 12px;text-align:left;vertical-align:top}
+.content th{background:var(--mist);color:var(--ink);font-weight:600}
 .related{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:10px}
 .related a{display:inline-block;padding:9px 14px;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;background:var(--surface)}
 .related a:hover{border-color:var(--ink)}

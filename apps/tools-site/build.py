@@ -18,6 +18,7 @@ from content.common import DOMAIN, BRAND, EMAIL, TOOLS_BASE, GOOGLE_SITE_VERIFIC
 from content.sections import SECTIONS  # noqa: E402
 from content.handlers import HANDLERS  # noqa: E402
 from content import pages as STATIC  # noqa: E402
+from content.guides import GUIDES  # noqa: E402
 import content.tools as tools_pkg  # noqa: E402
 
 TODAY = datetime.date.today().isoformat()
@@ -165,7 +166,7 @@ def tool_mount(t):
 def guidance(t):
     faq = "".join(f"<details><summary>{e(q)}</summary><p>{e(a)}</p></details>" for q, a in t.get("faq", []))
     rel = "".join(f'<li><a href="{tool_url(s)}">{e(BY_SLUG[s]["short"])}</a></li>' for s in t.get("related", []) if s in BY_SLUG)
-    out = link_tools(t.get("body", ""))
+    out = link_tools(t.get("body", "") + GUIDES.get(t["slug"], ""))
     if faq:
         out += f'<h2>Questions</h2><div class="faq">{faq}</div>'
     if rel:
