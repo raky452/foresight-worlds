@@ -1,0 +1,17 @@
+# generated site
+apps/tools-site/public/
+# python
+__pycache__/
+*.pyc
+.venv/
+# firebase
+.firebase/
+firebase-debug.log*
+# os / editors
+.DS_Store
+.vscode/
+.idea/
+# secrets
+.env
+*.key
+service-account*.json
