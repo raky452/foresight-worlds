@@ -298,15 +298,25 @@
 
   /* ---------- registry and boot ---------- */
   var handlers = {};
-  function register(map) { Object.keys(map).forEach(function (k) { handlers[k] = map[k]; }); }
+  var booted = false;
+  function register(map) { Object.keys(map).forEach(function (k) { handlers[k] = map[k]; }); if (booted) boot(); }
   function addLib(key, url) { LIBS[key] = url; }
+  // Mount every tool whose handler is registered. Safe to call repeatedly: modules that load
+  // later call it again through register(), so script timing never leaves a tool unmounted.
   function boot() {
-    document.querySelectorAll('[data-tool]').forEach(function (el) {
+    booted = true;
+    document.querySelectorAll('[data-tool]:not([data-mounted])').forEach(function (el) {
+      var fn = handlers[el.getAttribute('data-tool')];
+      if (!fn) return;
       var cfg = {};
       try { cfg = JSON.parse(el.getAttribute('data-config') || '{}'); } catch (e) {}
-      var name = el.getAttribute('data-tool'), fn = handlers[name];
-      if (fn) fn(el, cfg);
-      else el.innerHTML = '<div class="tool-panel"><p class="status err">This tool did not load. Reload the page to try again.</p></div>';
+      el.setAttribute('data-mounted', '1');
+      fn(el, cfg);
+    });
+  }
+  function reportMissing() {
+    document.querySelectorAll('[data-tool]:not([data-mounted])').forEach(function (el) {
+      el.innerHTML = '<div class="tool-panel"><p class="status err">This tool did not load. Reload the page to try again.</p></div>';
     });
   }
   window.TF = {
@@ -341,5 +351,6 @@
     pdfjs: pdfjs,
     pdflib: pdflib
   };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else setTimeout(boot, 0);
+  if (document.readyState === 'complete') boot(); else document.addEventListener('DOMContentLoaded', boot);
+  window.addEventListener('load', function () { boot(); setTimeout(reportMissing, 0); });
 })();
