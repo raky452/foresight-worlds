@@ -170,6 +170,14 @@
   }
 
   /* ---------- shared panel ---------- */
+  // Anonymous usage event for Google Analytics (if enabled): which tool ran and whether it worked.
+  // Never sends file names, sizes or contents.
+  function track(result, count) {
+    if (typeof window.gtag !== 'function') return;
+    var page = location.pathname.split('/').pop() || 'home';
+    window.gtag('event', 'tool_run', { tool_page: page, result: result, file_count: Math.min(count, 50) });
+  }
+
   function shell(root, o) {
     root.innerHTML =
       '<div class="tool-panel">' +
@@ -238,10 +246,12 @@
         var out = await handler(files.slice(), function (m) { setStatus(m); });
         show(out);
         var fails = out.filter(function (r) { return r.error; }).length;
+        track(fails === out.length ? 'failed' : fails ? 'partial' : 'success', files.length);
         if (fails === out.length) setStatus('Nothing was converted. See the details below.', 'err');
         else setStatus(fails ? 'Done, with ' + fails + ' problem' + (fails > 1 ? 's' : '') + ' listed below.' : 'Done. Your files are ready.', fails ? 'err' : 'ok');
       } catch (e) {
         console.error(e);
+        track('error', files.length);
         setStatus(e && e.message ? e.message : 'Something went wrong. Try again with a different file.', 'err');
       }
       busy = false; render(); reset.hidden = false;

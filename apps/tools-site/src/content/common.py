@@ -12,3 +12,4 @@ TOOLS_BASE = "/converters"
 # Fill these in when issued. Empty means the tag is not output.
 GOOGLE_SITE_VERIFICATION = ""   # content of <meta name="google-site-verification">
 ADSENSE_CLIENT = "ca-pub-5096677549477441"
+GA_MEASUREMENT_ID = "G-401JCP23S0"

@@ -14,7 +14,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC, OUT = os.path.join(ROOT, "src"), os.path.join(ROOT, "public")
 sys.path.insert(0, SRC)
 
-from content.common import DOMAIN, BRAND, EMAIL, TOOLS_BASE, GOOGLE_SITE_VERIFICATION, ADSENSE_CLIENT  # noqa: E402
+from content.common import DOMAIN, BRAND, EMAIL, TOOLS_BASE, GOOGLE_SITE_VERIFICATION, ADSENSE_CLIENT, GA_MEASUREMENT_ID  # noqa: E402
 from content.sections import SECTIONS  # noqa: E402
 from content.handlers import HANDLERS  # noqa: E402
 from content import pages as STATIC  # noqa: E402
@@ -102,6 +102,10 @@ def head(title, desc, path, ld=None, noindex=False, section=None, layout="articl
     extra = ""
     if GOOGLE_SITE_VERIFICATION:
         extra += f'<meta name="google-site-verification" content="{e(GOOGLE_SITE_VERIFICATION)}">\n'
+    if GA_MEASUREMENT_ID:
+        extra += (f'<script async src="https://www.googletagmanager.com/gtag/js?id={e(GA_MEASUREMENT_ID)}"></script>\n'
+                  "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}"
+                  f"gtag('js',new Date());gtag('config','{e(GA_MEASUREMENT_ID)}');</script>\n")
     if ADSENSE_CLIENT:
         extra += (f'<meta name="google-adsense-account" content="{e(ADSENSE_CLIENT)}">\n'
                   f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={e(ADSENSE_CLIENT)}" crossorigin="anonymous"></script>\n')
