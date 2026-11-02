@@ -115,6 +115,21 @@
         "type": 301
       },
       {
+        "source": "/jxl-to-jpg",
+        "destination": "/converters/jxl-to-jpg",
+        "type": 301
+      },
+      {
+        "source": "/jxl-to-png",
+        "destination": "/converters/jxl-to-png",
+        "type": 301
+      },
+      {
+        "source": "/open-jxl-file",
+        "destination": "/converters/open-jxl-file",
+        "type": 301
+      },
+      {
         "source": "/avif-to-png",
         "destination": "/converters/avif-to-png",
         "type": 301

@@ -9,7 +9,8 @@
     pdfjs: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js',
     pdfjsWorker: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js',
     jszip: 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js',
-    heic2any: 'https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js'
+    heic2any: 'https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js',
+    jxlDecode: 'https://cdn.jsdelivr.net/npm/@jsquash/jxl@1.3.0/decode.js'
   };
   var loading = {};
   function loadLib(key) {
@@ -50,7 +51,8 @@
   function rename(name, ext) { return baseName(name) + '.' + ext; }
   function isHeic(f) { return /\.(heic|heif)$/i.test(f.name || '') || /heic|heif/i.test(f.type || ''); }
   function isPdf(f) { return /\.pdf$/i.test(f.name || '') || f.type === 'application/pdf'; }
-  function isImage(f) { return isHeic(f) || /^image\//.test(f.type || '') || /\.(jpe?g|png|webp|avif|gif|bmp)$/i.test(f.name || ''); }
+  function isJxl(f) { return /\.jxl$/i.test(f.name || '') || f.type === 'image/jxl'; }
+  function isImage(f) { return isHeic(f) || isJxl(f) || /^image\//.test(f.type || '') || /\.(jpe?g|png|webp|avif|gif|bmp)$/i.test(f.name || ''); }
   function tick() { return new Promise(function (r) { setTimeout(r, 0); }); }
 
   async function decodeImage(file) {
@@ -62,6 +64,20 @@
         blob = Array.isArray(out) ? out[0] : out;
       } catch (e) {
         throw new Error(file.name + ' could not be read as a HEIC photo.');
+      }
+    }
+    if (isJxl(file)) {
+      // Chrome 155+, Firefox and Safari decode JPEG XL natively; others (such as Edge) use a WebAssembly decoder.
+      try { return await createImageBitmap(file); } catch (e) { /* fall through */ }
+      try {
+        var mod = await import(LIBS.jxlDecode);
+        var data = await mod.default(await file.arrayBuffer());
+        var c = document.createElement('canvas');
+        c.width = data.width; c.height = data.height;
+        c.getContext('2d').putImageData(data, 0, 0);
+        return c;
+      } catch (e) {
+        throw new Error(file.name + ' could not be read as a JPEG XL image.');
       }
     }
     try {
@@ -286,7 +302,7 @@
     box.addEventListener('click', function (e) { var c = e.target.closest('.chip'); if (!c) return; input.value = c.dataset.v; sync(); });
     input.addEventListener('input', sync);
   }
-  var IMG_ACCEPT = 'image/*,.heic,.heif,.avif,.webp';
+  var IMG_ACCEPT = 'image/*,.heic,.heif,.avif,.webp,.jxl';
   function qualityHTML(v) {
     return '<label class="field">Quality <small><output>' + v + '</output>%</small><input type="range" min="40" max="100" value="' + v + '" data-q></label>';
   }
@@ -327,7 +343,7 @@
     esc: esc,
     baseName: baseName,
     rename: rename,
-    isHeic: isHeic,
+    isHeic: isHeic, isJxl: isJxl,
     isPdf: isPdf,
     isImage: isImage,
     tick: tick,

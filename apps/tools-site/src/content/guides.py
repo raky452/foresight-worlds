@@ -535,4 +535,64 @@ GUIDES = {
 </ol>
 """,
 
+
+"jxl-to-jpg": """
+<h2>Which apps open JPEG XL</h2>
+<table>
+<tr><th>Where</th><th>Opens .jxl?</th></tr>
+<tr><td>Google Chrome 155 or newer</td><td>Yes, since October 2026</td></tr>
+<tr><td>Safari 17 or newer (Mac, iPhone, iPad)</td><td>Yes</td></tr>
+<tr><td>Microsoft Edge</td><td>Not by default at the time of writing</td></tr>
+<tr><td>Windows 11 Photos</td><td>Only after installing the free JPEG XL Image Extension from the Microsoft Store</td></tr>
+<tr><td>Windows 10, most Android galleries, older office software</td><td>Usually no</td></tr>
+</table>
+<p>Even where you can view a .jxl image, websites, upload forms, email recipients and print shops may still reject it. Converting to JPG avoids all of these problems.</p>
+<h2>Choosing the quality</h2>
+<table>
+<tr><th>Use</th><th>Suggested quality</th></tr>
+<tr><td>Printing or editing</td><td>95 to 100%</td></tr>
+<tr><td>Sharing, email and documents</td><td>85 to 90%</td></tr>
+<tr><td>Websites and chat apps</td><td>75 to 80%</td></tr>
+</table>
+<p>If an upload form has a size limit, convert at 90% first and then use the <a href="/compress-image">image compressor</a> to reach the exact size.</p>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>The first file takes a few seconds:</strong> in browsers without built-in JPEG XL support the page downloads a small decoder once. Later files are quicker.</li>
+<li><strong>Transparent areas turned white:</strong> JPG has no transparency. Use <a href="/jxl-to-png">JXL to PNG</a> to keep it.</li>
+<li><strong>The file still will not open:</strong> check that it really is a .jxl image. Files saved from websites are sometimes WebP or AVIF; this page converts those too.</li>
+</ul>
+""",
+
+"jxl-to-png": """
+<h2>JPEG XL, PNG, JPG and WebP compared</h2>
+<table>
+<tr><th>Format</th><th>Transparency</th><th>Lossless</th><th>Opens almost everywhere</th></tr>
+<tr><td>JPEG XL</td><td>Yes</td><td>Yes</td><td>Not yet</td></tr>
+<tr><td>PNG</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>JPG</td><td>No</td><td>No</td><td>Yes</td></tr>
+<tr><td>WebP</td><td>Yes</td><td>Yes</td><td>Most current apps</td></tr>
+</table>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>The PNG is very large:</strong> this is expected. For websites, <a href="/png-to-webp">PNG to WebP</a> makes it small again while keeping transparency.</li>
+<li><strong>Colours look slightly different:</strong> some JPEG XL images use wide-gamut or HDR colour. PNG saved by a browser uses standard colour, so very bright highlights may look calmer.</li>
+<li><strong>The first file is slow in Edge:</strong> the page loads a decoder once for browsers without built-in JPEG XL support.</li>
+</ul>
+""",
+
+"open-jxl-file": """
+<h2>Open JPEG XL on each device</h2>
+<ul>
+<li><strong>Windows 11:</strong> install the free JPEG XL Image Extension from the Microsoft Store to see .jxl files in Photos and File Explorer, or drag the file into Google Chrome 155 or newer.</li>
+<li><strong>Windows 10:</strong> there is no built-in support. Open the file in an up-to-date Google Chrome, or convert it above.</li>
+<li><strong>Microsoft Edge:</strong> Edge did not show JPEG XL by default at the time of writing. Use Chrome or the converter on this page.</li>
+<li><strong>Mac, iPhone and iPad:</strong> Preview, Photos and Safari open .jxl on macOS 14 and iOS 17 or newer.</li>
+<li><strong>Android:</strong> most gallery apps cannot open .jxl yet. Open this page in Chrome on your phone and convert the file here.</li>
+</ul>
+<h2>Why JPEG XL appeared suddenly</h2>
+<p>Google Chrome began showing JPEG XL images by default in October 2026. Because Chrome is the most used browser, image services can now send .jxl pictures to many more people, so saved images, downloads and attachments increasingly arrive as .jxl. Support in other apps is catching up one program at a time.</p>
+<h2>Should you keep the .jxl file?</h2>
+<p>Yes, if your devices open it: JPEG XL files are smaller and keep excellent quality. Convert a copy to JPG when you need to share, upload, print or edit the image in software that does not support the format yet. For images with transparent backgrounds, use <a href="/jxl-to-png">JXL to PNG</a>.</p>
+""",
+
 }

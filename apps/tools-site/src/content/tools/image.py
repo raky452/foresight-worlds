@@ -219,6 +219,55 @@ dict(slug="resize-image", section="image", tool="resize", config={},
       ("How do I reach a file size limit too?", "Resize first, then use the image compressor with the KB limit you need.")],
  related=["compress-image", "exam-photo-signature-resizer", "passport-photo-sheet"]),
 
+dict(slug="jxl-to-jpg", section="image", tool="convert", config={"to": "jpeg", "accept": ".jxl,image/jxl,image/*"},
+ short="JXL to JPG", blurb="Open JPEG XL images anywhere",
+ title="JXL to JPG Converter – Open JPEG XL Files Free, No Upload | TechnoForesight",
+ desc="Convert JPEG XL (.jxl) images to JPG in your browser. Works in Chrome, Edge, Firefox and Safari, batch conversion, nothing is uploaded.",
+ h1="Convert JXL to JPG",
+ lede="Turn JPEG XL (.jxl) images into ordinary JPG files that open on every phone, computer, app and upload form.",
+ body="""
+<h2>How to convert JXL to JPG</h2>
+<ol><li>Choose or drop one or more .jxl files.</li><li>Set the quality. 90% keeps the picture looking the same as the original.</li><li>Select <strong>Convert to JPG</strong> and download each file, or all of them as a ZIP.</li></ol>
+<h2>Why you are seeing .jxl files now</h2>
+<p>JPEG XL is a modern image format that makes photos smaller than JPG at the same quality. In October 2026 Google Chrome started showing JPEG XL images by default, so websites and image services can now send .jxl pictures to Chrome users. When you save one of those images, it arrives as a .jxl file that many programs still cannot open.</p>
+""",
+ faq=[("Is anything uploaded?", PRIVACY_LINE),
+      ("Does it work in Microsoft Edge?", "Yes. If your browser cannot read JPEG XL by itself, the page loads a small decoder that runs on your device, so the conversion still works."),
+      ("Will I lose quality?", "At 90% quality or above the difference is very hard to see. Use JXL to PNG if you need an exact, lossless copy.")],
+ related=["jxl-to-png", "open-jxl-file", "webp-to-jpg", "heic-to-jpg"]),
+
+dict(slug="jxl-to-png", section="image", tool="convert", config={"to": "png", "accept": ".jxl,image/jxl,image/*"},
+ short="JXL to PNG", blurb="Lossless copies of JPEG XL images",
+ title="JXL to PNG Converter – JPEG XL to PNG, Keeps Transparency | TechnoForesight",
+ desc="Convert JPEG XL (.jxl) images to PNG in your browser, keeping transparency and full detail. Free, batch conversion, no upload.",
+ h1="Convert JXL to PNG",
+ lede="Make an exact, editable copy of a JPEG XL image as a PNG file, with transparent backgrounds kept.",
+ body="""
+<h2>How to convert JXL to PNG</h2>
+<ol><li>Choose or drop your .jxl files.</li><li>Select <strong>Convert to PNG</strong>.</li><li>Download each PNG, or all of them in one ZIP file.</li></ol>
+<h2>When PNG is the right choice</h2>
+<p>JPEG XL can store lossless images and transparency. PNG keeps both, so it is the right target for logos, graphics, screenshots and any image you will edit further. For photos you only want to share or upload, <a href="/jxl-to-jpg">JXL to JPG</a> gives a much smaller file.</p>
+""",
+ faq=[("Is anything uploaded?", PRIVACY_LINE),
+      ("Is transparency kept?", "Yes. Transparent areas in the JPEG XL image stay transparent in the PNG."),
+      ("Why is the PNG so much bigger?", "JPEG XL compresses far better than PNG. The PNG holds the same pixels without that compression.")],
+ related=["jxl-to-jpg", "open-jxl-file", "webp-to-png", "png-to-webp"]),
+
+dict(slug="open-jxl-file", section="image", tool="convert", config={"to": "jpeg", "accept": ".jxl,image/jxl,image/*"},
+ short="Open a JXL file", blurb="View and fix .jxl images",
+ title="How to Open a JXL File on Windows, Edge, Android and Mac | TechnoForesight",
+ desc="Can't open a .jxl file? See which apps and browsers support JPEG XL, and convert it to JPG right here in your browser with no upload.",
+ h1="How to open a JXL (JPEG XL) file",
+ lede="Your file is a JPEG XL image. Drop it here to turn it into a JPG that opens everywhere, or use the guide below to view it in an app you already have.",
+ body="""
+<h2>What a .jxl file is</h2>
+<p>A .jxl file is a JPEG XL image, a newer format that stores photos and graphics in smaller files than JPG. It is a normal picture; it just needs software that understands the format. Renaming the file to .jpg does not work, because the data inside is still JPEG XL.</p>
+""",
+ faq=[("Is anything uploaded?", PRIVACY_LINE),
+      ("Can I just rename .jxl to .jpg?", "No. The file contents stay JPEG XL, so most apps will still refuse it. Convert it instead."),
+      ("Is a .jxl file safe?", "It is an image format like JPG or PNG. As with any file, only open images from sources you trust.")],
+ related=["jxl-to-jpg", "jxl-to-png", "heic-to-jpg", "webp-to-jpg"]),
+
 dict(slug="avif-to-png", section="image", tool="convert", config={"to": "png"},
  short="AVIF to PNG", blurb="Lossless copies of AVIF images",
  title="AVIF to PNG Converter – Free, Keeps Transparency, No Upload | TechnoForesight",
