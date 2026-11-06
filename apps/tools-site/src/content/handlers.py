@@ -6,5 +6,5 @@ HANDLERS = {
     "convert": "image", "compress": "image", "resize": "image",
     "formphoto": "forms", "passport": "forms",
     "merge": "pdf", "split": "pdf", "rotate": "pdf",
-    "img2pdf": "pdf", "pdf2img": "pdf", "compresspdf": "pdf",
+    "img2pdf": "pdf", "pdf2img": "pdf", "compresspdf": "pdf", "croppdf": "pdf",
 }
