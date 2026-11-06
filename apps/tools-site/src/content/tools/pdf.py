@@ -53,7 +53,7 @@ dict(slug="split-pdf", section="pdf", tool="split", config={},
  faq=[("Is the PDF uploaded?", PRIVACY_LINE),
       ("Do the pages lose quality?", "No. Pages are copied exactly, with text still selectable."),
       ("Can I split a password-protected PDF?", "Not yet. Save an unlocked copy first.")],
- related=["merge-pdf", "pdf-to-jpg", "rotate-pdf"]),
+ related=["merge-pdf", "pdf-to-jpg", "rotate-pdf", "crop-pdf"]),
 
 dict(slug="rotate-pdf", section="pdf", tool="rotate", config={},
  short="Rotate PDF", blurb="Fix sideways pages",
@@ -70,7 +70,7 @@ dict(slug="rotate-pdf", section="pdf", tool="rotate", config={},
  faq=[("Is the file uploaded?", PRIVACY_LINE),
       ("Does rotating reduce quality?", "No. Only the page orientation setting changes."),
       ("Can I rotate only some pages?", "Yes. Type the page numbers or ranges in the Pages box.")],
- related=["merge-pdf", "split-pdf", "compress-pdf"]),
+ related=["merge-pdf", "split-pdf", "crop-pdf", "compress-pdf"]),
 
 dict(slug="jpg-to-pdf", section="pdf", tool="img2pdf", config={},
  short="JPG to PDF", blurb="Turn photos and scans into a PDF",
@@ -137,6 +137,30 @@ dict(slug="pdf-to-png", section="pdf", tool="pdf2img", config={"fmt": "png", "tr
       ("Which resolution should I choose?", "Standard (150 DPI) suits slides and most uploads. Choose High (300 DPI) for print or to crop small details, and Small (96 DPI) for quick sharing."),
       ("Are PNG files bigger than JPG?", "Yes, often several times bigger for pages with photos, but similar for plain text pages. Compress the result with the image compressor if you need a smaller file.")],
  related=["pdf-to-jpg", "compress-image", "split-pdf", "jpg-to-pdf"]),
+
+dict(slug="crop-pdf", section="pdf", tool="croppdf", config={},
+ short="Crop PDF", blurb="Trim margins from every page",
+ title="Crop PDF Pages, Trim Margins Free | TechnoForesight",
+ desc="Crop PDF margins in millimetres for all or selected pages. Free, no upload, runs in your browser.",
+ h1="Crop PDF pages",
+ lede="Trim white margins or unwanted edges from every page of a PDF, or only the pages you choose, and download a new file.",
+ body="""
+<h2>How to crop a PDF</h2>
+<ol><li>Choose one or more PDFs.</li>
+<li>Enter how many millimetres to remove from the top, bottom, left and right. The values are measured on the page as it appears on screen, even if the page is rotated.</li>
+<li>Leave Pages empty to crop every page, or type pages such as <code>1, 3-5</code>.</li>
+<li>Select <strong>Crop PDF</strong> and download the result.</li></ol>
+<h2>What cropping does</h2>
+<p>The tool shrinks the visible area of each page and keeps the text and images inside it as they were, so text stays selectable and the file does not lose quality. This is a good fit for scanned pages with wide borders, documents exported with large margins, and pages you want to print or present with less white space.</p>
+<div class="note"><p>Cropping hides the outside area but does not erase it. Content you trim off may still exist inside the file, so do not rely on cropping to remove confidential information. Black it out before you export the PDF instead.</p></div>
+<h2>Choosing the margins</h2>
+<p>A standard A4 page is 210 by 297 mm. Many word processors leave about 25 mm of margin, so removing 20 mm from each side leaves the text almost touching the edge. Start with 10 mm, check the result, and run the tool again on the new file if you want to trim more.</p>
+""",
+ faq=[("Is my PDF uploaded?", PRIVACY_LINE),
+      ("Does cropping reduce the file size?", "Usually not much. The hidden area can stay inside the file. To make the file smaller, use compress PDF afterwards."),
+      ("Can I crop only some pages?", "Yes. Type the page numbers or ranges in the Pages box, for example 2 or 1-3, 6."),
+      ("Why does my PDF look the same in some programs?", "A few older programs ignore the page size and show the full original page. The file opens cropped in common browsers and PDF viewers.")],
+ related=["rotate-pdf", "split-pdf", "compress-pdf", "pdf-to-png"]),
 
 dict(slug="compress-pdf", section="pdf", tool="compresspdf", config={"target": 500, "presets": [100, 200, 500, 1000, 2000]},
  short="Compress PDF to size", blurb="Fit any upload limit",
