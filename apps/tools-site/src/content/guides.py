@@ -478,6 +478,29 @@ GUIDES = {
 </ul>
 """,
 
+"pdf-to-png": """
+<h2>Resolution and file size</h2>
+<table>
+<tr><th>Setting</th><th>A4 page becomes</th><th>Good for</th></tr>
+<tr><td>Small (96 DPI)</td><td>794 × 1123 px</td><td>Chat apps and quick previews</td></tr>
+<tr><td>Standard (150 DPI)</td><td>1240 × 1754 px</td><td>Slides, documents and web pages</td></tr>
+<tr><td>High (300 DPI)</td><td>2480 × 3508 px</td><td>Printing, logos and cropping fine detail</td></tr>
+</table>
+<h2>Common uses</h2>
+<ul>
+<li>Placing a PDF page into a presentation or design file without blurry edges.</li>
+<li>Extracting a signature, stamp or logo that was exported inside a PDF.</li>
+<li>Sharing a diagram or chart as an image that keeps thin lines readable.</li>
+</ul>
+<h2>Troubleshooting</h2>
+<ul>
+<li>If the image looks too soft, use High (300 DPI). Very large pages are limited to 8000 pixels on the longest side to protect your device's memory.</li>
+<li>If a long PDF is slow on your phone, convert only the pages you need by typing them in the Pages box.</li>
+<li>Password-protected PDFs must be unlocked first.</li>
+<li>If the PNG must fit an upload limit, compress it afterwards with the <a href="/compress-image">image compressor</a>.</li>
+</ul>
+""",
+
 "pdf-to-jpg": """
 <h2>Choosing resolution</h2>
 <table>
