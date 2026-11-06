@@ -136,7 +136,9 @@
     var lim = 8000 / Math.max(vp.width, vp.height);
     if (lim < 1) vp = page.getViewport({ scale: scale * lim });
     var cv = canvasOf(vp.width, vp.height, bg === undefined ? '#ffffff' : bg);
-    await page.render({ canvasContext: cv.getContext('2d'), viewport: vp }).promise;
+    var ro = { canvasContext: cv.getContext('2d'), viewport: vp };
+    if (bg === null) ro.background = 'rgba(0,0,0,0)';
+    await page.render(ro).promise;
     var base = page.getViewport({ scale: 1 });
     page.cleanup();
     return { canvas: cv, wPt: base.width, hPt: base.height };
