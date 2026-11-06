@@ -478,6 +478,29 @@ GUIDES = {
 </ul>
 """,
 
+"crop-pdf": """
+<h2>Common margin amounts</h2>
+<table>
+<tr><th>Goal</th><th>Suggested margin on each edge</th></tr>
+<tr><td>Remove a thin scanner border</td><td>3 to 8 mm</td></tr>
+<tr><td>Reduce a normal document margin</td><td>10 to 15 mm</td></tr>
+<tr><td>Focus on a table or figure in the middle</td><td>30 mm or more, checked page by page</td></tr>
+</table>
+<h2>Common uses</h2>
+<ul>
+<li>Trimming the dark edges that scanners leave around pages.</li>
+<li>Printing a document with less empty space so it fits on fewer sheets.</li>
+<li>Preparing slides or study notes where only the central content matters.</li>
+</ul>
+<h2>Troubleshooting</h2>
+<ul>
+<li>If you see an error that a page would be too small, lower the margins; each page must keep at least a few millimetres of height and width.</li>
+<li>If the page still looks uncropped, open the result in a modern browser or a current PDF reader.</li>
+<li>Password-protected PDFs must be unlocked first.</li>
+<li>If the cropped file needs to be smaller for an upload, run it through <a href="/compress-pdf">compress PDF</a> afterwards.</li>
+</ul>
+""",
+
 "pdf-to-png": """
 <h2>Resolution and file size</h2>
 <table>
