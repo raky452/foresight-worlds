@@ -92,6 +92,45 @@
     });
   };
 
+  T.croppdf = function (root) {
+    var sh = shell(root, { accept: '.pdf,application/pdf', multiple: true, kind: 'PDF files', filter: isPdf, action: 'Crop PDF', pick: 'Choose PDF files', zipName: 'cropped-pdfs.zip',
+      options:
+        '<p class="field wide" style="font-weight:400;margin:0"><small data-info></small> Enter how much to remove from each edge, measured on the page as you see it.</p>' +
+        '<label class="field">Top (mm)<input type="number" min="0" step="0.5" value="10" data-m="top"></label>' +
+        '<label class="field">Bottom (mm)<input type="number" min="0" step="0.5" value="10" data-m="bottom"></label>' +
+        '<label class="field">Left (mm)<input type="number" min="0" step="0.5" value="10" data-m="left"></label>' +
+        '<label class="field">Right (mm)<input type="number" min="0" step="0.5" value="10" data-m="right"></label>' +
+        '<label class="field">Pages <small>leave empty for all pages</small><input type="text" data-r placeholder="All pages"></label>' });
+    pageCountHint(sh);
+    sh.onRun(async function (files, say) {
+      var L = await pdflib(), k = 72 / 25.4, out = [], m = {};
+      ['top', 'bottom', 'left', 'right'].forEach(function (s) { m[s] = Math.max(0, +sh.opt('[data-m="' + s + '"]').value || 0) * k; });
+      if (!(m.top + m.bottom + m.left + m.right > 0)) throw new Error('Enter at least one margin greater than 0.');
+      var rtext = sh.opt('[data-r]').value.trim();
+      for (var i = 0; i < files.length; i++) {
+        var f = files[i]; say('Cropping ' + f.name + '…'); await tick();
+        try {
+          var d = await loadPdfLibDoc(L, f), pages = d.getPages(), pick = null;
+          if (rtext) { pick = {}; parseRanges(rtext, pages.length).forEach(function (r) { for (var q = r[0]; q <= r[1]; q++) pick[q - 1] = 1; }); }
+          pages.forEach(function (p, idx) {
+            if (pick && !pick[idx]) return;
+            var b = p.getCropBox(), rot = ((p.getRotation().angle % 360) + 360) % 360, e = { top: m.top, right: m.right, bottom: m.bottom, left: m.left }, u;
+            if (rot === 90) u = { left: e.top, top: e.right, right: e.bottom, bottom: e.left };
+            else if (rot === 180) u = { bottom: e.top, left: e.right, top: e.bottom, right: e.left };
+            else if (rot === 270) u = { right: e.top, bottom: e.right, left: e.bottom, top: e.left };
+            else u = e;
+            var w = b.width - u.left - u.right, h = b.height - u.top - u.bottom;
+            if (w < 20 || h < 20) throw new Error('Page ' + (idx + 1) + ' of ' + f.name + ' would be too small after cropping. Use smaller margins.');
+            p.setCropBox(b.x + u.left, b.y + u.bottom, w, h);
+            p.setMediaBox(b.x + u.left, b.y + u.bottom, w, h);
+          });
+          out.push({ name: baseName(f.name) + '-cropped.pdf', blob: pdfBlob(await d.save()), before: f.size });
+        } catch (e) { out.push({ name: f.name, error: e.message }); }
+      }
+      return out;
+    });
+  };
+
   T.img2pdf = function (root) {
     var sh = shell(root, { accept: IMG_ACCEPT, multiple: true, reorder: true, kind: 'images', filter: isImage, action: 'Create PDF', pick: 'Choose images',
       options:
