@@ -93,7 +93,7 @@ dict(slug="jpg-to-pdf", section="pdf", tool="img2pdf", config={},
  faq=[("Are my images uploaded?", PRIVACY_LINE),
       ("Why are my iPhone photos rotated correctly?", "The tool reads the orientation saved by your phone camera and applies it before creating the page."),
       ("Is there a page limit?", "No fixed limit. Hundreds of photos may be slow on older phones.")],
- related=["compress-pdf", "merge-pdf", "pdf-to-jpg", "heic-to-jpg"]),
+ related=["compress-pdf", "merge-pdf", "pdf-to-jpg", "pdf-to-png"]),
 
 dict(slug="pdf-to-jpg", section="pdf", tool="pdf2img", config={},
  short="PDF to JPG", blurb="Save pages as images",
@@ -113,7 +113,30 @@ dict(slug="pdf-to-jpg", section="pdf", tool="pdf2img", config={},
  faq=[("Is the PDF uploaded?", PRIVACY_LINE),
       ("Can I convert just one page?", "Yes. Type its number in the Pages box."),
       ("Does it work with scanned PDFs?", "Yes. Each scanned page becomes an image.")],
- related=["jpg-to-pdf", "split-pdf", "compress-image"]),
+ related=["pdf-to-png", "jpg-to-pdf", "split-pdf", "compress-image"]),
+
+dict(slug="pdf-to-png", section="pdf", tool="pdf2img", config={"fmt": "png", "transparent": True},
+ short="PDF to PNG", blurb="Sharp pages, transparent background",
+ title="PDF to PNG, Transparent Background | TechnoForesight",
+ desc="Convert PDF pages to sharp PNG images, with an optional transparent background. Up to 300 DPI, no upload, free.",
+ h1="Convert PDF to PNG",
+ lede="Save PDF pages as crisp PNG images, and remove the white page background when the PDF does not paint one, so logos, signatures and diagrams can sit on any colour.",
+ body="""
+<h2>How to convert a PDF to PNG</h2>
+<ol><li>Choose a PDF.</li><li>Pick the resolution. Leave <strong>Transparent background</strong> ticked if you want the page without its white backdrop.</li>
+<li>Type page numbers such as <code>2</code> or <code>1-3</code>, or leave Pages empty to convert every page.</li>
+<li>Select <strong>Convert to images</strong> and download one page or all of them as a ZIP.</li></ol>
+<h2>When PNG is the better choice</h2>
+<p>PNG keeps every pixel exactly as it was drawn, so thin lines, small text, charts and logos stay sharp. JPG blurs those edges to save space. Choose PNG for slides, design work, documentation screenshots and anything you will edit again. Choose <a href="/pdf-to-jpg">PDF to JPG</a> for photo-heavy pages where a small file matters more than perfect edges.</p>
+<h2>How the transparent background works</h2>
+<p>Most PDFs made from a word processor, a design tool or an invoice generator do not paint a white rectangle behind the content; the white you see is only the viewer. With the option on, this tool leaves that area empty, so the PNG shows through to whatever sits behind it. If a PDF does paint a coloured or white background (common in scanned pages and slide exports), that background stays, because it is part of the page. Photos of paper and scans therefore stay opaque.</p>
+<div class="note"><p>To use a signature or logo from a PDF: convert the page at 300 DPI with transparency on, then crop the PNG to the part you need.</p></div>
+""",
+ faq=[("Is my PDF uploaded?", PRIVACY_LINE),
+      ("Why is my PNG background still white?", "The PDF itself paints a white or coloured background, which is common for scans and slide exports. Only pages that leave the background empty become transparent."),
+      ("Which resolution should I choose?", "Standard (150 DPI) suits slides and most uploads. Choose High (300 DPI) for print or to crop small details, and Small (96 DPI) for quick sharing."),
+      ("Are PNG files bigger than JPG?", "Yes, often several times bigger for pages with photos, but similar for plain text pages. Compress the result with the image compressor if you need a smaller file.")],
+ related=["pdf-to-jpg", "compress-image", "split-pdf", "jpg-to-pdf"]),
 
 dict(slug="compress-pdf", section="pdf", tool="compresspdf", config={"target": 500, "presets": [100, 200, 500, 1000, 2000]},
  short="Compress PDF to size", blurb="Fit any upload limit",
