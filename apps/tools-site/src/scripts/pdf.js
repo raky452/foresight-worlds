@@ -131,33 +131,37 @@
       throw new Error(f.name + ' could not be opened. It may be damaged or not a real PDF.');
     }
   }
-  async function renderPage(doc, num, scale) {
+  async function renderPage(doc, num, scale, bg) {
     var page = await doc.getPage(num), vp = page.getViewport({ scale: scale });
     var lim = 8000 / Math.max(vp.width, vp.height);
     if (lim < 1) vp = page.getViewport({ scale: scale * lim });
-    var cv = canvasOf(vp.width, vp.height, '#ffffff');
+    var cv = canvasOf(vp.width, vp.height, bg === undefined ? '#ffffff' : bg);
     await page.render({ canvasContext: cv.getContext('2d'), viewport: vp }).promise;
     var base = page.getViewport({ scale: 1 });
     page.cleanup();
     return { canvas: cv, wPt: base.width, hPt: base.height };
   }
 
-  T.pdf2img = function (root) {
+  T.pdf2img = function (root, c) {
+    c = c || {};
+    var pngFirst = c.fmt === 'png';
     var sh = shell(root, { accept: '.pdf,application/pdf', multiple: false, kind: 'a PDF file', filter: isPdf, action: 'Convert to images', pick: 'Choose a PDF file', zipName: 'pdf-pages.zip',
       options:
         '<label class="field">Image quality<select data-dpi><option value="150">Standard (150 DPI)</option><option value="300">High, for printing (300 DPI)</option><option value="96">Small, for sharing (96 DPI)</option></select></label>' +
-        '<label class="field">Format<select data-fmt><option value="image/jpeg">JPG</option><option value="image/png">PNG</option></select></label>' +
+        '<label class="field">Format<select data-fmt><option value="image/jpeg"' + (pngFirst ? '' : ' selected') + '>JPG</option><option value="image/png"' + (pngFirst ? ' selected' : '') + '>PNG</option></select></label>' +
+        (c.transparent ? '<label class="check"><input type="checkbox" data-clear checked> Transparent background (PNG only)</label>' : '') +
         '<label class="field">Pages <small data-info></small><input type="text" data-r placeholder="All pages"></label>' });
     pageCountHint(sh);
     sh.onRun(async function (files, say) {
       var f = files[0], doc = await openPdfjs(f), n = doc.numPages, mime = sh.opt('[data-fmt]').value, scale = +sh.opt('[data-dpi]').value / 72;
+      var clear = !!(sh.opt('[data-clear]') && sh.opt('[data-clear]').checked) && mime === 'image/png';
       var rt = sh.opt('[data-r]').value.trim(), list = [];
       if (rt) parseRanges(rt, n).forEach(function (r) { for (var k = r[0]; k <= r[1]; k++) list.push(k); });
       else for (var k2 = 1; k2 <= n; k2++) list.push(k2);
       var out = [];
       for (var i = 0; i < list.length; i++) {
         say('Rendering page ' + list[i] + ' (' + (i + 1) + ' of ' + list.length + ')…');
-        var r = await renderPage(doc, list[i], scale);
+        var r = await renderPage(doc, list[i], scale, clear ? null : undefined);
         out.push({ name: baseName(f.name) + '-page-' + list[i] + '.' + extFor(mime), blob: await toBlob(r.canvas, mime, 0.9), note: r.canvas.width + ' × ' + r.canvas.height + ' px' });
         r.canvas.width = r.canvas.height = 0;
       }
