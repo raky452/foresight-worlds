@@ -265,7 +265,8 @@ dict(slug="open-jxl-file", section="image", tool="convert", config={"to": "jpeg"
 """,
  faq=[("Is anything uploaded?", PRIVACY_LINE),
       ("Can I just rename .jxl to .jpg?", "No. The file contents stay JPEG XL, so most apps will still refuse it. Convert it instead."),
-      ("Is a .jxl file safe?", "It is an image format like JPG or PNG. As with any file, only open images from sources you trust.")],
+      ("Is a .jxl file safe?", "It is an image format like JPG or PNG. As with any file, only open images from sources you trust."),
+      ("How do I open a JXL file on Android?", "Most Android gallery apps cannot open .jxl files yet. Open this page in Chrome on your phone, choose the file, select Convert to JPG and save the result. The JPG then opens in your gallery and in any app that accepts photos, and the file never leaves your phone.")],
  related=["jxl-to-jpg", "jxl-to-png", "heic-to-jpg", "webp-to-jpg"]),
 
 dict(slug="avif-to-png", section="image", tool="convert", config={"to": "png"},
