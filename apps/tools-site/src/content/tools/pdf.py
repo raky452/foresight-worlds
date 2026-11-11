@@ -51,6 +51,7 @@ dict(slug="split-pdf", section="pdf", tool="split", config={},
 <p>Send only the relevant pages of a long statement, separate a scanned bundle into individual documents, or take one certificate out of a combined file for an upload.</p>
 """,
  faq=[("Is the PDF uploaded?", PRIVACY_LINE),
+      ("How do I segregate or separate the pages of a PDF?", "Choose the option to save every page separately to break the PDF into one file per page, or type ranges such as 1-3, 4-6 and choose one PDF per range to separate it into several documents. Pages are copied without loss and nothing is uploaded."),
       ("Do the pages lose quality?", "No. Pages are copied exactly, with text still selectable."),
       ("Can I split a password-protected PDF?", "Not yet. Save an unlocked copy first.")],
  related=["merge-pdf", "pdf-to-jpg", "rotate-pdf", "crop-pdf"]),
