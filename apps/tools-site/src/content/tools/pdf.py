@@ -36,8 +36,8 @@ dict(slug="merge-pdf", section="pdf", tool="merge", config={},
 
 dict(slug="split-pdf", section="pdf", tool="split", config={},
  short="Split PDF", blurb="Extract or separate pages",
- title="Split PDF – Extract Pages for Free, No Upload | TechnoForesight",
- desc="Split a PDF into separate files or extract selected pages into a new PDF. Free and private: your document never leaves your device.",
+ title="Split PDF: Separate or Cut PDF Pages Free | TechnoForesight",
+ desc="Split a PDF into pages or ranges, cut out the pages you need or separate every page. Free, no upload: your PDF never leaves your device.",
  h1="Split a PDF",
  lede="Take out the pages you need, split a PDF into ranges, or save every page as its own file.",
  body="""
