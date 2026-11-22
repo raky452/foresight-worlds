@@ -2,7 +2,7 @@
 from .common import BRAND, EMAIL
 
 ASSISTANT_SLUG = "assistant"
-ASSISTANT_VERSION = "0.2.0"
+ASSISTANT_VERSION = "0.3.0"
 _RELEASES = "https://github.com/raky452/ai/releases"
 SETUP_URL = _RELEASES + "/latest/download/TechnoForesightAssistant-Setup.exe"
 PORTABLE_URL = _RELEASES + "/latest/download/TechnoForesightAssistant-Portable.zip"
@@ -42,6 +42,7 @@ def assistant_body():
 <li><strong>summarise C:\\Users\\you\\Downloads\\report.pdf</strong>: reads a PDF, Word (.docx) or text file and gives you five key points plus any dates, amounts and action items.</li>
 <li><strong>settings wifi</strong>, <strong>settings bluetooth</strong>, <strong>settings display</strong>: jumps straight to that page of Windows Settings.</li>
 <li><strong>lock pc</strong>: locks your computer instantly.</li>
+<li><strong>Connectors:</strong> one word opens your favourite sites and tools. <strong>yt telugu songs</strong> searches YouTube, <strong>maps hyderabad</strong> opens a map, and <strong>add connector store https://your-site.com</strong> makes <strong>store</strong> open your own website.</li>
 <li><strong>technoforesight.in</strong> or <strong>google ipl score</strong>: opens a website or searches the web.</li>
 <li><strong>Answers in your language:</strong> pick English, తెలుగు (Telugu), हिन्दी (Hindi), தமிழ் (Tamil), ಕನ್ನಡ (Kannada), മലയാളം (Malayalam), मराठी (Marathi), বাংলা (Bengali), ગુજરાતી (Gujarati), ਪੰਜਾਬੀ (Punjabi), ଓଡ଼ିଆ (Odia) or اردو (Urdu) from the 🌐 menu and the AI replies in that language.</li>
 <li>Anything else, such as <em>"write a leave letter for tomorrow"</em> or <em>"explain GST in simple words"</em>, is answered by the AI model on your laptop.</li>
