@@ -2,7 +2,7 @@
 from .common import BRAND, EMAIL
 
 ASSISTANT_SLUG = "assistant"
-ASSISTANT_VERSION = "0.1.2"
+ASSISTANT_VERSION = "0.1.3"
 _RELEASES = "https://github.com/raky452/ai/releases"
 SETUP_URL = _RELEASES + "/latest/download/TechnoForesightAssistant-Setup.exe"
 PORTABLE_URL = _RELEASES + "/latest/download/TechnoForesightAssistant-Portable.zip"
@@ -50,13 +50,13 @@ def assistant_body():
 <li><strong>Download</strong> the installer with the button above.</li>
 <li><strong>Run</strong> <code>TechnoForesightAssistant-Setup.exe</code>. Windows may show <em>"Windows protected your PC"</em> because the app is new and not yet code-signed. Click <strong>More info</strong>, then <strong>Run anyway</strong>. Tick <em>Start automatically when I sign in</em> so Alt+Space always works.</li>
 <li><strong>Install the AI engine.</strong> On first launch the assistant shows an <em>Install Ollama</em> button. Ollama is the free, open-source engine that runs AI models on your PC. Download it from <a href="{OLLAMA_URL}" rel="nofollow">ollama.com</a> and install it, then click <em>I've installed it, check again</em>.</li>
-<li><strong>Download the AI model.</strong> Click <em>Download AI model</em>. This is a one-time download of about 2.5 GB (the Qwen3 4B model), so use Wi-Fi.</li>
+<li><strong>Download the AI model.</strong> Click <em>Download AI model</em>. This is a one-time download of about 2.5 GB (the Qwen3 4B Instruct model), so use Wi-Fi.</li>
 <li><strong>Press Alt+Space</strong> and start typing.</li>
 </ol>
 <h2>Why offline AI?</h2>
 <p>Most AI assistants send everything you type to a company's servers. That is a problem when you are summarising a bank statement, an offer letter or a medical report. TechnoForesight Assistant uses an open-source model that runs on your own processor, the same way the converters on this site process files inside your browser. It also keeps working without internet once the model is downloaded, and there are no daily limits or subscriptions.</p>
 <h2>Will it run on my laptop?</h2>
-<p>The default model needs about 8 GB of RAM and works on most laptops from the last eight years, including older Intel Core i5 machines without a graphics card. Answers appear word by word; expect a few seconds for a short answer on an older laptop. If you have 16 GB of RAM or more, you can switch to the larger <code>qwen3:8b</code> model for better answers by adding <code>model = "qwen3:8b"</code> to <code>%APPDATA%\\TechnoForesight\\config.toml</code>.</p>
+<p>The default model (Qwen3 4B Instruct) needs about 8 GB of RAM and works on most laptops from the last eight years, including older Intel Core i5 machines without a graphics card. Answers appear word by word; expect a few seconds for a short answer on an older laptop. If you have 16 GB of RAM or more, you can switch to the larger <code>qwen3:8b</code> model for better answers by adding <code>model = "qwen3:8b"</code> to <code>%APPDATA%\\TechnoForesight\\config.toml</code>.</p>
 <h2>Questions</h2>
 <div class="faq">
 <details><summary>Is it really free?</summary><p>Yes. The assistant, the Ollama engine and the Qwen3 model are all free. Qwen3 is released under the Apache 2.0 open-source licence.</p></details>
