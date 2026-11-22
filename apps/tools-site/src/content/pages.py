@@ -18,6 +18,7 @@ PRIVACY = f"""<p><em>Last updated: {TODAY}</em></p>
 <p>Like most websites, our hosting provider (Google Firebase Hosting) automatically records basic technical information for security and reliability, such as IP address, browser type and the pages requested. We do not use this to identify you.</p>
 <h2>Third-party code</h2>
 <p>Some tools load open-source software libraries from public content delivery networks (cdnjs.cloudflare.com and cdn.jsdelivr.net), and fonts from Google Fonts. These providers receive standard request information, such as your IP address, when the code is downloaded. They do not receive your files.</p>
+<p>The assistant page shows our launch videos from YouTube through youtube-nocookie.com. The video player loads from YouTube only when you press play; until then, only the preview images load, from i.ytimg.com.</p>
 <h2>Analytics</h2>
 <p>We use Google Analytics to understand how visitors use the site, for example which pages are visited, which tools are used and whether they work, so we can improve it. Google Analytics uses cookies and receives standard information such as your approximate location, device, browser and the pages you view. It never receives the files you convert or their contents. You can opt out with the <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow">Google Analytics opt-out browser add-on</a>.</p>
 <h2>Advertising and cookies</h2>

@@ -2,14 +2,20 @@
 from .common import BRAND, EMAIL
 
 ASSISTANT_SLUG = "assistant"
-ASSISTANT_VERSION = "0.3.0"
+ASSISTANT_VERSION = "0.3.1"
 _RELEASES = "https://github.com/raky452/ai/releases"
 SETUP_URL = _RELEASES + "/latest/download/TechnoForesightAssistant-Setup.exe"
 PORTABLE_URL = _RELEASES + "/latest/download/TechnoForesightAssistant-Portable.zip"
 SOURCE_URL = "https://github.com/raky452/ai/tree/main/technoforesight/windows-assistant"
 OLLAMA_URL = "https://ollama.com/download/windows"
-# YouTube video id of the demo/installation video. Empty = no embed.
-ASSISTANT_VIDEO_ID = "6oqI3PJZu7c"
+# Launch-ad videos on the TechnoForesight YouTube channel (first one is shown by default).
+ASSISTANT_VIDEOS = [
+    dict(id="6oqI3PJZu7c", label="తెలుగు", title="TechnoForesight Assistant launch ad (Telugu)",
+         caption="Telugu ad · 58 seconds · AI voice-over"),
+    dict(id="US3ozZIHie0", label="English", title="TechnoForesight Assistant launch ad (English)",
+         caption="English ad · 58 seconds · AI voice-over"),
+]
+ASSISTANT_VIDEO_ID = ASSISTANT_VIDEOS[0]["id"]
 
 ASSISTANT_TITLE = f"Free Offline AI Assistant for Windows (Alt+Space) | {BRAND}"
 ASSISTANT_DESC = ("Download TechnoForesight Assistant: a free AI command bar for Windows 10 and 11 that runs on your own PC. "
@@ -18,12 +24,22 @@ ASSISTANT_H1 = "TechnoForesight Assistant for Windows"
 
 
 def _video():
-    if not ASSISTANT_VIDEO_ID:
+    if not ASSISTANT_VIDEOS:
         return ""
-    return (f'<h2>Watch it in action</h2><div style="position:relative;padding-top:56.25%;border-radius:14px;overflow:hidden">'
-            f'<iframe src="https://www.youtube-nocookie.com/embed/{ASSISTANT_VIDEO_ID}" title="TechnoForesight Assistant demo" '
-            'style="position:absolute;inset:0;width:100%;height:100%;border:0" loading="lazy" '
-            'allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>')
+    first = ASSISTANT_VIDEOS[0]
+    tabs = "".join(
+        f'<button type="button" class="tfv-tab" aria-pressed="{"true" if i == 0 else "false"}" data-id="{v["id"]}" '
+        f'data-title="{v["title"]}" data-caption="{v["caption"]}">{v["label"]}</button>'
+        for i, v in enumerate(ASSISTANT_VIDEOS))
+    return f"""<section class="tfv" id="watch" data-tf-video aria-label="Watch the launch ad">
+<div class="tfv-head"><h2>Watch it in action</h2><div class="tfv-tabs" role="group" aria-label="Video language">{tabs}</div></div>
+<div class="tfv-shell"><div class="tfv-stage">
+<button type="button" class="tfv-poster" data-id="{first['id']}" aria-label="Play {first['title']}">
+<img src="https://i.ytimg.com/vi/{first['id']}/hqdefault.jpg" alt="{first['title']}" width="480" height="360" loading="eager" decoding="async">
+<span class="tfv-play" aria-hidden="true"></span></button>
+</div></div>
+<p class="tfv-caption">{first['caption']}</p>
+</section>"""
 
 
 def assistant_body():
@@ -33,8 +49,8 @@ def assistant_body():
 <a class="btn ghost" href="{PORTABLE_URL}" style="text-decoration:none">Portable zip</a>
 </p>
 <p style="color:var(--muted);font-size:14px;margin:0">Version {ASSISTANT_VERSION} · Windows 10 and 11 (64-bit) · No admin rights needed · <a href="{SOURCE_URL}" rel="nofollow">Source code</a></p>
-<ul class="hero-proof"><li>Runs offline on your PC</li><li>No account or subscription</li><li>Nothing uploaded</li></ul>
 {_video()}
+<ul class="hero-proof"><li>Runs offline on your PC</li><li>No account or subscription</li><li>Nothing uploaded</li></ul>
 <h2>What you can type</h2>
 <ul>
 <li><strong>open chrome</strong>, <strong>word</strong>, <strong>calculator</strong>, <strong>whatsapp</strong>: opens any app in your Start menu, including Microsoft Store apps.</li>

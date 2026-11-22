@@ -228,6 +228,23 @@ def tool_page(t):
             LAYOUTS[t["layout"]](t) + "\n" + footer() + scripts_for(t["tool"]) + "\n</body></html>")
 
 
+def promo_band():
+    """Compact promo for the Windows assistant on the hub pages (poster only, no player)."""
+    vid = SOFTWARE.ASSISTANT_VIDEO_ID
+    if not vid:
+        return ""
+    href = "/" + SOFTWARE.ASSISTANT_SLUG
+    return f"""<section class="promo" aria-label="New: TechnoForesight Assistant">
+<div><span class="promo-kicker">New · Free</span>
+<h2>Free offline AI assistant for Windows. Answers in Telugu, Hindi &amp; 10 more languages.</h2>
+<p>Press Alt + Space anywhere. It opens apps, finds files and summarises PDFs, and the AI runs on your own PC.</p>
+<div class="promo-actions"><a class="promo-btn primary" href="{href}">Download free</a><a class="promo-btn ghost" href="{href}#watch">Watch the ad</a></div></div>
+<a class="promo-thumb" href="{href}#watch" aria-label="Watch the TechnoForesight Assistant ad">
+<img src="https://i.ytimg.com/vi/{vid}/mqdefault.jpg" alt="" width="320" height="180" loading="lazy" decoding="async">
+<span class="tfv-play" aria-hidden="true"></span></a>
+</section>"""
+
+
 def home(path="/"):
     groups = ""
     for s in LIVE_SECTIONS:
@@ -247,6 +264,7 @@ def home(path="/"):
 <p>Every tool on this site runs inside your browser. Your photos and documents stay on your device, so there are no upload waits, no daily limits and no sign-up.</p>
 <ul class="hero-proof"><li>Nothing is uploaded</li><li>No limits or watermarks</li><li>Works on phone and computer</li></ul>
 </section>
+{promo_band()}
 <div class="dir">{groups}</div>
 </div>
 <div class="wrap narrow content">
@@ -278,7 +296,7 @@ def assistant_page():
 <h1 style="font:700 clamp(30px,4.4vw,44px)/1.1 var(--head);color:var(--ink);margin:30px 0 10px">{e(SOFTWARE.ASSISTANT_H1)}</h1>
 {SOFTWARE.assistant_body()}
 </div></main>
-{footer()}</body></html>"""
+{footer()}<script src="{asset('js/video.js')}" defer></script></body></html>"""
 
 
 def update_redirects():
