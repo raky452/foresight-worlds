@@ -2,7 +2,7 @@
 from .common import BRAND, EMAIL
 
 ASSISTANT_SLUG = "assistant"
-ASSISTANT_VERSION = "0.1.3"
+ASSISTANT_VERSION = "0.2.0"
 _RELEASES = "https://github.com/raky452/ai/releases"
 SETUP_URL = _RELEASES + "/latest/download/TechnoForesightAssistant-Setup.exe"
 PORTABLE_URL = _RELEASES + "/latest/download/TechnoForesightAssistant-Portable.zip"
@@ -13,7 +13,7 @@ ASSISTANT_VIDEO_ID = ""
 
 ASSISTANT_TITLE = f"Free Offline AI Assistant for Windows (Alt+Space) | {BRAND}"
 ASSISTANT_DESC = ("Download TechnoForesight Assistant: a free AI command bar for Windows 10 and 11 that runs on your own PC. "
-                  "Open apps, find files, summarise PDFs and ask questions with nothing uploaded.")
+                  "Open apps, find files, summarise PDFs and get answers in Telugu, Hindi, Tamil and more, with nothing uploaded.")
 ASSISTANT_H1 = "TechnoForesight Assistant for Windows"
 
 
@@ -43,6 +43,7 @@ def assistant_body():
 <li><strong>settings wifi</strong>, <strong>settings bluetooth</strong>, <strong>settings display</strong>: jumps straight to that page of Windows Settings.</li>
 <li><strong>lock pc</strong>: locks your computer instantly.</li>
 <li><strong>technoforesight.in</strong> or <strong>google ipl score</strong>: opens a website or searches the web.</li>
+<li><strong>Answers in your language:</strong> pick English, తెలుగు (Telugu), हिन्दी (Hindi), தமிழ் (Tamil), ಕನ್ನಡ (Kannada), മലയാളം (Malayalam), मराठी (Marathi), বাংলা (Bengali), ગુજરાતી (Gujarati), ਪੰਜਾਬੀ (Punjabi), ଓଡ଼ିଆ (Odia) or اردو (Urdu) from the 🌐 menu and the AI replies in that language.</li>
 <li>Anything else, such as <em>"write a leave letter for tomorrow"</em> or <em>"explain GST in simple words"</em>, is answered by the AI model on your laptop.</li>
 </ul>
 <h2>How to install (5 minutes)</h2>
