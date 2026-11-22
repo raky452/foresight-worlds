@@ -9,7 +9,7 @@ PORTABLE_URL = _RELEASES + "/latest/download/TechnoForesightAssistant-Portable.z
 SOURCE_URL = "https://github.com/raky452/ai/tree/main/technoforesight/windows-assistant"
 OLLAMA_URL = "https://ollama.com/download/windows"
 # YouTube video id of the demo/installation video. Empty = no embed.
-ASSISTANT_VIDEO_ID = ""
+ASSISTANT_VIDEO_ID = "6oqI3PJZu7c"
 
 ASSISTANT_TITLE = f"Free Offline AI Assistant for Windows (Alt+Space) | {BRAND}"
 ASSISTANT_DESC = ("Download TechnoForesight Assistant: a free AI command bar for Windows 10 and 11 that runs on your own PC. "
