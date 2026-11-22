@@ -170,6 +170,16 @@
         "type": 301
       },
       {
+        "source": "/pdf-to-png",
+        "destination": "/converters/pdf-to-png",
+        "type": 301
+      },
+      {
+        "source": "/crop-pdf",
+        "destination": "/converters/crop-pdf",
+        "type": 301
+      },
+      {
         "source": "/compress-pdf",
         "destination": "/converters/compress-pdf",
         "type": 301

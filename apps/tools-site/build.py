@@ -19,6 +19,7 @@ from content.sections import SECTIONS  # noqa: E402
 from content.handlers import HANDLERS  # noqa: E402
 from content import pages as STATIC  # noqa: E402
 from content.guides import GUIDES  # noqa: E402
+from content import software as SOFTWARE  # noqa: E402
 import content.tools as tools_pkg  # noqa: E402
 
 TODAY = datetime.date.today().isoformat()
@@ -99,6 +100,7 @@ def head(title, desc, path, ld=None, noindex=False, section=None, layout="articl
     canon = DOMAIN + (canonical or path)
     ld_html = "".join('<script type="application/ld+json">' + json.dumps(x, ensure_ascii=False) + "</script>" for x in (ld or []))
     nav = "".join(f'<a href="{TOOLS_BASE}#{s["id"]}">{e(s["nav"])}</a>' for s in LIVE_SECTIONS)
+    nav += f'<a href="/{SOFTWARE.ASSISTANT_SLUG}">AI Assistant for Windows</a>'
     extra = ""
     if GOOGLE_SITE_VERIFICATION:
         extra += f'<meta name="google-site-verification" content="{e(GOOGLE_SITE_VERIFICATION)}">\n'
@@ -147,6 +149,7 @@ def footer():
     for s in LIVE_SECTIONS:
         items = "".join(f'<li><a href="{tool_url(t["slug"])}">{e(t["short"])}</a></li>' for t in TOOLS if t["section"] == s["id"])
         cols += f"<div><h2>{e(s['name'])}</h2><ul>{items}</ul></div>"
+    cols += (f'<div><h2>Software</h2><ul><li><a href="/{SOFTWARE.ASSISTANT_SLUG}">AI Assistant for Windows</a></li></ul></div>')
     cols += ('<div><h2>About</h2><ul><li><a href="/about">About us</a></li><li><a href="/privacy">Privacy policy</a></li>'
              '<li><a href="/terms">Terms of use</a></li><li><a href="/contact">Contact</a></li></ul></div>')
     return f"""<footer class="site-foot"><div class="wrap">
@@ -265,6 +268,19 @@ def article(slug, title, desc, h1, body, noindex=False):
 {footer()}</body></html>"""
 
 
+def assistant_page():
+    path = "/" + SOFTWARE.ASSISTANT_SLUG
+    ld = [{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "TechnoForesight Assistant",
+           "operatingSystem": "Windows 10, Windows 11", "applicationCategory": "UtilitiesApplication",
+           "softwareVersion": SOFTWARE.ASSISTANT_VERSION, "downloadUrl": SOFTWARE.SETUP_URL, "url": DOMAIN + path,
+           "offers": {"@type": "Offer", "price": "0", "priceCurrency": "INR"}, "description": SOFTWARE.ASSISTANT_DESC}]
+    return head(SOFTWARE.ASSISTANT_TITLE, SOFTWARE.ASSISTANT_DESC, path, ld) + f"""<main><div class="wrap narrow content">
+<h1 style="font:700 clamp(30px,4.4vw,44px)/1.1 var(--head);color:var(--ink);margin:30px 0 10px">{e(SOFTWARE.ASSISTANT_H1)}</h1>
+{SOFTWARE.assistant_body()}
+</div></main>
+{footer()}</body></html>"""
+
+
 def update_redirects():
     """Old flat tool URLs (/heic-to-jpg) permanently redirect to /converters/heic-to-jpg."""
     path = os.path.join(ROOT, "firebase.json")
@@ -296,19 +312,20 @@ def main():
     write(TOOLS_BASE.strip("/") + ".html", home(TOOLS_BASE))
     for t in TOOLS:
         write(tool_url(t["slug"]).strip("/") + ".html", tool_page(t))
+    write(SOFTWARE.ASSISTANT_SLUG + ".html", assistant_page())
     write("about.html", article("about", f"About {BRAND}", f"About {BRAND}: free browser-based file tools that never upload your files.", f"About {BRAND}", STATIC.ABOUT))
     write("privacy.html", article("privacy", f"Privacy Policy | {BRAND}", f"How {BRAND} handles your data. Files are processed in your browser and never uploaded.", "Privacy policy", STATIC.PRIVACY))
     write("terms.html", article("terms", f"Terms of Use | {BRAND}", f"Terms of use for {BRAND} tools.", "Terms of use", STATIC.TERMS))
     write("contact.html", article("contact", f"Contact | {BRAND}", f"Contact {BRAND}.", "Contact us", STATIC.CONTACT))
     write("404.html", article("404", f"Page not found | {BRAND}", "Page not found.", "Page not found", STATIC.NOTFOUND, noindex=True))
-    urls = [TOOLS_BASE] + [tool_url(t["slug"]) for t in TOOLS] + ["/about", "/privacy", "/terms", "/contact"]
+    urls = [TOOLS_BASE] + [tool_url(t["slug"]) for t in TOOLS] + ["/" + SOFTWARE.ASSISTANT_SLUG, "/about", "/privacy", "/terms", "/contact"]
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
           "".join(f"<url><loc>{DOMAIN}{u}</loc><lastmod>{TODAY}</lastmod></url>\n" for u in urls) + "</urlset>\n")
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n")
     if ADSENSE_CLIENT:
         write("ads.txt", f"google.com, {ADSENSE_CLIENT.replace('ca-', '')}, DIRECT, f08c47fec0942fa0\n")
     update_redirects()
-    print(f"Built {len(TOOLS)} tool pages in {len(LIVE_SECTIONS)} sections, plus home and 5 static pages.")
+    print(f"Built {len(TOOLS)} tool pages in {len(LIVE_SECTIONS)} sections, plus home, the assistant page and 5 static pages.")
 
 
 if __name__ == "__main__":
