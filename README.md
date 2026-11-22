@@ -26,6 +26,7 @@ The project starts with the converter layer, because every simulation ends with 
 | Path | What it is | Status |
 |---|---|---|
 | [`apps/tools-site`](apps/tools-site) | Browser-based converters for images and PDFs (HEIC, WebP, AVIF, PNG, JPG, compress to exact size, merge, split, rotate, PDF ⇄ images). Everything runs on the user's device; nothing is uploaded. Live at [technoforesight.in](https://technoforesight.in). | Live |
+| [`technoforesight.in/assistant`](https://technoforesight.in/assistant) | Download page for **TechnoForesight Assistant for Windows**, a free offline AI command bar (source: [raky452/ai](https://github.com/raky452/ai/tree/main/technoforesight/windows-assistant)). It has a Telugu/English launch-ad showcase, and the home page has a promo band linking to it. | Live |
 | `packages/` | Reusable converter and trace libraries for use inside simulations | Planned |
 | `worlds/` | First simulated worlds and scenarios | Planned |
 | `connectors/` | MCP servers so any AI agent can enter a world through a standard protocol | Planned |
@@ -42,7 +43,7 @@ python3 build.py              # generates public/
 python3 -m http.server -d public 8080
 ```
 
-Open http://localhost:8080. Deploy with `firebase deploy` (the build runs automatically before deploying).
+Open http://localhost:8080. **Deploys are automatic:** any push to `main` that touches `apps/tools-site/**` runs `.github/workflows/deploy.yml`, which builds and deploys to Firebase Hosting. You can also deploy by hand with `firebase deploy`.
 
 ## Principles
 

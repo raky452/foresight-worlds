@@ -21,6 +21,8 @@ src/content/sections.py  sections: id, name, nav label, description, order
 src/content/handlers.py  handler name -> module file
 src/content/tools/*.py   page entries, auto-discovered (one file per family)
 src/content/pages.py     about, privacy, terms, contact
+src/content/software.py  downloadable-software pages: /assistant (version, download URLs, video IDs, copy)
+src/scripts/video.js     /assistant only: Telugu/English video toggle + click-to-play YouTube facade
 public/                  generated output (do not edit by hand)
 ```
 
@@ -67,3 +69,13 @@ Rules: authenticate every endpoint, never store user files longer than a request
 - Expand each tool page to roughly 600+ words of real guidance.
 - Make sure the contact email in `common.py` receives mail.
 - Keep ads out of the tool panel and away from download buttons.
+
+
+## Software pages (/assistant)
+`/assistant` is the download page for TechnoForesight Assistant for Windows. Everything about it lives in `src/content/software.py`:
+- `ASSISTANT_VERSION`: shown on the page. Bump it after each `win-v*` release in raky452/ai.
+- `SETUP_URL` / `PORTABLE_URL` point to `github.com/raky452/ai/releases/latest/download/<stable name>`, so new releases need no site change beyond the version label.
+- Video IDs for the Telugu and English launch ads. The showcase loads `youtube-nocookie.com` only after the play button is pressed (posters come from `i.ytimg.com`). The privacy page says so.
+- `build.py` adds the nav and footer links, `SoftwareApplication` structured data, the sitemap entry, and the compact promo band on `/` and `/converters` (links to `/assistant#watch`; no player embedded there).
+
+**URL rule:** never rename `/assistant` or any existing slug. When adding sections, check that the set of generated pages and canonicals before and after is unchanged.
