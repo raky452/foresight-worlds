@@ -2,7 +2,7 @@
 from .common import BRAND, EMAIL
 
 ASSISTANT_SLUG = "assistant"
-ASSISTANT_VERSION = "0.1.1"
+ASSISTANT_VERSION = "0.1.2"
 _RELEASES = "https://github.com/raky452/ai/releases"
 SETUP_URL = _RELEASES + "/latest/download/TechnoForesightAssistant-Setup.exe"
 PORTABLE_URL = _RELEASES + "/latest/download/TechnoForesightAssistant-Portable.zip"
